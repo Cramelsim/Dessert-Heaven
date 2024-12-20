@@ -18,23 +18,83 @@ async function populateMenu() {
         const box = document.createElement('div');
         box.className = 'box';
         box.innerHTML = `
-            <img src="Ksh{item.image}" alt="Ksh{item.name}">
+            <img src="${item.image}" alt="${item.name}">
             <h3>${item.name}</h3>
             <div class="price">Ksh${item.price} <span>Ksh${item.oldPrice}</span></div>
             <a href="#" class="btn" data-id="${item.id}">add to cart</a>
         `;
         menuContainer.appendChild(box);
     });
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const productId = button.dataset.id;
-            console.log(`Product ${productId} added to cart`);
-            // Here, you can add the functionality to actually add the item to the cart.
-        });
-    });
+  // Attach event listeners to add-to-cart buttons
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  addToCartButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+          e.preventDefault();
+          const productId = button.dataset.id;
+          addToCart(productId, data.menu);
+      });
+  });
 }
+
+// Add item to cart
+function addToCart(productId, menu) {
+  const product = menu.find(item => item.id === productId);
+  if (product) {
+      const existingItem = cart.find(item => item.id === productId);
+      if (existingItem) {
+          existingItem.quantity += 1;
+      } else {
+          cart.push({ ...product, quantity: 1 });
+      }
+      console.log(cart);
+      updateCartDisplay();
+  }
+}
+
+// Update the cart display
+function updateCartDisplay() {
+  const cartContainer = document.querySelector('.cart-items-container');
+  cartContainer.innerHTML = ''; // Clear existing cart items
+
+  cart.forEach(item => {
+      const cartItem = document.createElement('div');
+      cartItem.className = 'cart-item';
+      cartItem.innerHTML = `
+          <span class="fas fa-times" data-id="${item.id}"></span>
+          <img src="${item.image}" alt="${item.name}">
+          <div class="content">
+              <h3>${item.name}</h3>
+              <div class="price">Ksh${item.price} x ${item.quantity}</div>
+          </div>
+      `;
+      cartContainer.appendChild(cartItem);
+  });
+
+  // Add event listener for removing items
+  const removeButtons = document.querySelectorAll('.cart-item .fa-times');
+  removeButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+          const productId = e.target.dataset.id;
+          removeFromCart(productId);
+      });
+  });
+}
+
+// Remove item from cart
+function removeFromCart(productId) {
+  const itemIndex = cart.findIndex(item => item.id === productId);
+  if (itemIndex !== -1) {
+      cart.splice(itemIndex, 1);
+      updateCartDisplay();
+  }
+}
+
+// Fetch and initialize the menu on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  populateMenu();
+});
+
+
 
 // Populate Products Section
 async function populateProducts() {
@@ -62,7 +122,8 @@ async function populateProducts() {
                 <div class="stars">
                     ${stars}
                 </div>
-                <div class="price">Ksh${product.price} <span>Ksh${product.oldPrice}</span></div>
+              <div class="price">Ksh${product.price} <span>Ksh${product.oldPrice}</span></div>
+
             </div>
         `;
         productsContainer.appendChild(box);
