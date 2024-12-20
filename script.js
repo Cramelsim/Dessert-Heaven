@@ -20,7 +20,7 @@ async function populateMenu() {
         box.innerHTML = `
             <img src="Ksh{item.image}" alt="Ksh{item.name}">
             <h3>${item.name}</h3>
-            <div class="price">$Ksh{item.price} <span>$Ksh{item.oldPrice}</span></div>
+            <div class="price">Ksh${item.price} <span>Ksh${item.oldPrice}</span></div>
             <a href="#" class="btn" data-id="${item.id}">add to cart</a>
         `;
         menuContainer.appendChild(box);
@@ -62,7 +62,7 @@ async function populateProducts() {
                 <div class="stars">
                     ${stars}
                 </div>
-                <div class="price">$${product.price} <span>$${product.oldPrice}</span></div>
+                <div class="price">Ksh${product.price} <span>Ksh${product.oldPrice}</span></div>
             </div>
         `;
         productsContainer.appendChild(box);
