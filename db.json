@@ -1,0 +1,89 @@
+{
+    "menu": [
+      {
+        "id": 1,
+        "name": "Classic Glazed",
+        "description": "Our signature light and fluffy glazed doughnut",
+        "price": 2.99,
+        "oldPrice": 3.99,
+        "image": "https://i.pinimg.com/736x/b2/20/ed/b220ed9f9578dacd5ef60523b10abaa5.jpg",
+        "category": "classic"
+      },
+      {
+        "id": 2,
+        "name": "Chocolate Dream",
+        "description": "Rich chocolate glazed with chocolate sprinkles",
+        "price": 3.49,
+        "oldPrice": 4.49,
+        "image": "https://i.pinimg.com/236x/a1/e0/e7/a1e0e7ae1ca5202bc7a385c00993e3bd.jpg",
+        "category": "premium"
+      },
+      {
+        "id": 3,
+        "name": "Berry Blast",
+        "description": "Filled with mixed berry compote",
+        "price": 3.99,
+        "oldPrice": 4.99,
+        "image": "https://i.pinimg.com/236x/ee/ad/08/eead085443a35bca59fc560c67f0a514.jpg",
+        "category": "filled"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "DIY Doughnut Kit",
+        "description": "Make your own doughnuts at home",
+        "price": 24.99,
+        "oldPrice": 29.99,
+        "image": "https://i.pinimg.com/236x/33/64/82/336482bb45c8e1dbb764be0d9b27f884.jpg",
+        "rating": 4.5
+      },
+      {
+        "id": 2,
+        "name": "Doughnut Party Box",
+        "description": "24 assorted doughnuts perfect for parties",
+        "price": 39.99,
+        "oldPrice": 45.99,
+        "image": "https://i.pinimg.com/236x/da/33/a4/da33a435cd238b12bd0df089935b9c89.jpg",
+        "rating": 5
+      }
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "name": "Sarah Johnson",
+        "avatar": "https://i.pinimg.com/236x/2d/4e/ad/2d4eada04d0b343c7ada90ebc6be93dc.jpg",
+        "rating": 5,
+        "text": "Best doughnuts in town! The Classic Glazed is absolutely perfect.",
+        "date": "2024-05-15"
+      },
+      {
+        "id": 2,
+        "name": "Mike Peterson",
+        "avatar": "https://i.pinimg.com/236x/e2/96/97/e29697f9bc4c829850f6c4e778b5174b.jpg",
+        "rating": 4.5,
+        "text": "Amazing variety and always fresh. The Berry Blast is my favorite!",
+        "date": "2024-05-10"
+      }
+    ],
+    "blogs": [
+      {
+        "id": 1,
+        "title": "The Art of Doughnut Making",
+        "author": "admin",
+        "date": "2024-05-21",
+        "image": "https://i.pinimg.com/474x/f9/24/c4/f924c4829c1ab271a2168d501bc0cad8.jpg",
+        "excerpt": "Discover the secrets behind our perfectly crafted doughnuts.",
+        "content": "Full blog post content here..."
+      },
+      {
+        "id": 2,
+        "title": "History of the Doughnut",
+        "author": "admin",
+        "date": "2024-05-18",
+        "image": "https://i.pinimg.com/474x/64/55/17/645517c247f348d1a4f8e433544ec870.jpg",
+        "excerpt": "From Dutch olykoeks to modern-day delights.",
+        "content": "Full blog post content here..."
+      }
+    ]
+  }
