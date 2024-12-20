@@ -18,9 +18,9 @@ async function populateMenu() {
         const box = document.createElement('div');
         box.className = 'box';
         box.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
+            <img src="Ksh{item.image}" alt="Ksh{item.name}">
             <h3>${item.name}</h3>
-            <div class="price">$${item.price} <span>$${item.oldPrice}</span></div>
+            <div class="price">$Ksh{item.price} <span>$Ksh{item.oldPrice}</span></div>
             <a href="#" class="btn" data-id="${item.id}">add to cart</a>
         `;
         menuContainer.appendChild(box);
