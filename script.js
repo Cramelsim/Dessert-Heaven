@@ -25,6 +25,15 @@ async function populateMenu() {
         `;
         menuContainer.appendChild(box);
     });
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productId = button.dataset.id;
+            console.log(`Product ${productId} added to cart`);
+            // Here, you can add the functionality to actually add the item to the cart.
+        });
+    });
 }
 
 // Populate Products Section

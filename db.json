@@ -4,8 +4,8 @@
         "id": 1,
         "name": "Classic Glazed",
         "description": "Our signature light and fluffy glazed doughnut",
-        "price": 2.99,
-        "oldPrice": 3.99,
+        "price": 450,
+        "oldPrice": 550,
         "image": "https://i.pinimg.com/736x/b2/20/ed/b220ed9f9578dacd5ef60523b10abaa5.jpg",
         "category": "classic"
       },
@@ -13,8 +13,8 @@
         "id": 2,
         "name": "Chocolate Dream",
         "description": "Rich chocolate glazed with chocolate sprinkles",
-        "price": 3.49,
-        "oldPrice": 4.49,
+        "price": 400,
+        "oldPrice": 500,
         "image": "https://i.pinimg.com/236x/a1/e0/e7/a1e0e7ae1ca5202bc7a385c00993e3bd.jpg",
         "category": "premium"
       },
@@ -22,8 +22,8 @@
         "id": 3,
         "name": "Berry Blast",
         "description": "Filled with mixed berry compote",
-        "price": 3.99,
-        "oldPrice": 4.99,
+        "price": 420,
+        "oldPrice": 600,
         "image": "https://i.pinimg.com/236x/ee/ad/08/eead085443a35bca59fc560c67f0a514.jpg",
         "category": "filled"
       }
@@ -33,8 +33,8 @@
         "id": 1,
         "name": "DIY Doughnut Kit",
         "description": "Make your own doughnuts at home",
-        "price": 24.99,
-        "oldPrice": 29.99,
+        "price": 470,
+        "oldPrice": 670,
         "image": "https://i.pinimg.com/236x/33/64/82/336482bb45c8e1dbb764be0d9b27f884.jpg",
         "rating": 4.5
       },
@@ -42,8 +42,8 @@
         "id": 2,
         "name": "Doughnut Party Box",
         "description": "24 assorted doughnuts perfect for parties",
-        "price": 39.99,
-        "oldPrice": 45.99,
+        "price": 500,
+        "oldPrice": 600,
         "image": "https://i.pinimg.com/236x/da/33/a4/da33a435cd238b12bd0df089935b9c89.jpg",
         "rating": 5
       }
