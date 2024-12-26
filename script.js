@@ -1,4 +1,3 @@
-// data.js
 async function fetchData() {
     try {
         const response = await fetch('db.json');
@@ -152,12 +151,57 @@ async function populateReviews() {
     });
 }
 
-// Populate Blogs Section
+
+    // Add required CSS for form feedback and blog content
+    const style = document.createElement('style');
+    style.textContent = `
+        .status-message {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-size: 1.6rem;
+            text-align: center;
+            display: none;
+        }
+
+        .status-message.loading {
+            background: #333;
+            color: #fff;
+        }
+
+        .status-message.success {
+            background: #4CAF50;
+            color: #fff;
+        }
+
+        .status-message.error {
+            background: #f44336;
+            color: #fff;
+        }
+
+        .contact form input[type="submit"]:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .blogs .box .content p {
+            transition: all 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
+
+
+// Populate Blogs Section with Read More functionality
 async function populateBlogs() {
     const data = await fetchData();
     const blogsContainer = document.querySelector('.blogs .box-container');
     
     data.blogs.forEach(blog => {
+        // Create truncated excerpt
+        const truncatedExcerpt = blog.content ? 
+            blog.content.substring(0, 100) + '...' : 
+            blog.excerpt;
+
         const box = document.createElement('div');
         box.className = 'box';
         box.innerHTML = `
@@ -167,13 +211,48 @@ async function populateBlogs() {
             <div class="content">
                 <a href="#" class="title">${blog.title}</a>
                 <span>by ${blog.author} / ${blog.date}</span>
-                <p>${blog.excerpt}</p>
-                <a href="#" class="btn">read more</a>
+                <p data-full-content="${blog.content || blog.excerpt}">${truncatedExcerpt}</p>
+                <a href="#" class="btn read-more">read more</a>
             </div>
         `;
         blogsContainer.appendChild(box);
+
+        // Add click event listener to the read more button
+        const readMoreBtn = box.querySelector('.read-more');
+        const contentP = box.querySelector('.content p');
+        const fullContent = contentP.getAttribute('data-full-content');
+
+        readMoreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (readMoreBtn.textContent.toLowerCase() === 'read more') {
+                // Show full content
+                contentP.textContent = fullContent;
+                readMoreBtn.textContent = 'read less';
+            } else {
+                // Show truncated content
+                contentP.textContent = truncatedExcerpt;
+                readMoreBtn.textContent = 'read more';
+            }
+        });
     });
 }
+
+// Add required styles
+const blogStyles = document.createElement('style');
+blogStyles.textContent = `
+    .blogs .box .content p {
+        transition: all 0.3s ease;
+        margin: 1rem 0;
+        line-height: 1.8;
+    }
+
+    .blogs .box .read-more {
+        display: inline-block;
+        margin-top: 1rem;
+    }
+`;
+document.head.appendChild(blogStyles);
 
 // Initialize all sections when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
