@@ -96,9 +96,13 @@ async function populateProducts() {
             </div>
             <div class="content">
                 <h3>${product.name}</h3>
-                <div class="stars">
-                    ${stars}
-                </div>
+               <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
                 <div class="price">Ksh${product.price} <span>Ksh${product.oldPrice}</span></div>
             </div>
         `;
@@ -170,28 +174,45 @@ function updateCartDisplay() {
 
 // Populate Reviews Section
 async function populateReviews() {
-    const data = await fetchData();
-    const reviewContainer = document.querySelector('.review .box-container');
-    
-    // Keep existing reviews
-    const existingReviews = reviewContainer.innerHTML;
-    
-    data.reviews.forEach(review => {
-        const stars = '★'.repeat(Math.floor(review.rating)) + 
-                     (review.rating % 1 ? '½' : '') + 
-                     '☆'.repeat(5 - Math.ceil(review.rating));
-                     
-        const box = document.createElement('div');
-        box.className = 'box';
-        box.innerHTML = `
-            <img src="${review.avatar}" alt="${review.name}" class="user">
-            <h3>${review.name}</h3>
-            <div class="stars">${stars}</div>
-            <p>${review.text}</p>
-        `;
-        reviewContainer.appendChild(box);
-    });
+    try {
+        const data = await fetch('db.json').then(response => response.json());
+        const reviewContainer = document.querySelector('.review .box-container');
+
+        // Clear existing content (if any)
+        reviewContainer.innerHTML = '';
+
+        // Dynamically add reviews from db.json
+        data.review.forEach(review => {
+            const stars = '★'.repeat(Math.floor(review.rating)) + 
+                          (review.rating % 1 ? '½' : '') + 
+                          '☆'.repeat(5 - Math.ceil(review.rating));
+            
+            const box = document.createElement('div');
+            box.className = 'box';
+            box.innerHTML = `
+                <img src="${review.avatar}" alt="${review.name}" class="user">
+                <h3>${review.name}</h3>
+                 <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+                <p>${review.text}</p>
+                <span>${review.date}</span>
+            `;
+            reviewContainer.appendChild(box);
+        });
+    } catch (error) {
+        console.error('Error fetching reviews:', error);
+    }
 }
+
+// Call the function after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    populateReviews();
+});
 
 // Populate Blogs Section with proper content
 async function populateBlogs() {
@@ -332,45 +353,90 @@ function updateCartDisplay() {
 }
 
 // Contact form submission handling
+// Enhanced contact form submission handling
 function initializeContactForm() {
     const contactForm = document.querySelector('.contact form');
     
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Create status message element if it doesn't exist
-        let statusMessage = document.querySelector('.status-message');
-        if (!statusMessage) {
-            statusMessage = document.createElement('div');
-            statusMessage.className = 'status-message';
-            contactForm.appendChild(statusMessage);
+        const formInputs = contactForm.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]');
+        let isValid = true;
+        
+        // Basic form validation
+        formInputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('error');
+            } else {
+                input.classList.remove('error');
+            }
+        });
+        
+        if (!isValid) {
+            showNotification('Please fill in all fields', 'error');
+            return;
         }
 
+        // Show loading state
+        const submitButton = contactForm.querySelector('input[type="submit"]');
+        const originalText = submitButton.value;
+        submitButton.value = 'Sending...';
+        submitButton.disabled = true;
+
         try {
-            // Simulate form submission (replace with actual API call)
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            // Simulate API call with a delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
             
-            // Show success message
-            statusMessage.textContent = 'Message sent successfully!';
-            statusMessage.className = 'status-message success';
-            statusMessage.style.display = 'block';
+            // Show success notification
+            showNotification('Message sent successfully!', 'success');
             
-            // Clear form
+            // Reset form
             contactForm.reset();
             
-            // Hide message after 3 seconds
-            setTimeout(() => {
-                statusMessage.style.display = 'none';
-            }, 3000);
-            
         } catch (error) {
-            // Show error message
-            statusMessage.textContent = 'Error sending message. Please try again.';
-            statusMessage.className = 'status-message error';
-            statusMessage.style.display = 'block';
+            // Show error notification
+            showNotification('Error sending message. Please try again.', 'error');
+        } finally {
+            // Reset button state
+            submitButton.value = originalText;
+            submitButton.disabled = false;
         }
     });
 }
+
+// Enhanced notification function to display form submission status
+function showNotification(message, type = 'success') {
+    // Remove any existing notifications
+    const existingNotification = document.querySelector('.form-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    const notification = document.createElement('div');
+    notification.className = `form-notification ${type}`;
+    
+    // Create icon based on notification type
+    const icon = document.createElement('i');
+    icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+    
+    notification.appendChild(icon);
+    notification.insertAdjacentText('beforeend', ` ${message}`);
+    
+    // Add notification to the page
+    const contactSection = document.querySelector('.contact');
+    contactSection.appendChild(notification);
+    
+    // Add visible class after a small delay (for animation)
+    setTimeout(() => notification.classList.add('visible'), 10);
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('visible');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
@@ -380,6 +446,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeSearch();
     initializeCartFunctionality();
     initializeRemoveFromCart();
+    initializeContactForm();
+    
     
     // Initialize UI toggles
     const searchForm = document.querySelector('.search-form');

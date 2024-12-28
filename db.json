@@ -20,6 +20,15 @@
       },
       {
         "id": 3,
+        "name": "Cinnamon Blast",
+        "description": "Filled with mixed berry compote",
+        "price": 450,
+        "oldPrice": 650,
+        "image": "https://i.pinimg.com/236x/1c/20/fc/1c20fc94a61c196b4b99380753bea5bd.jpg",
+        "category": "filled"
+      },
+      {
+        "id": 3,
         "name": "Berry Blast",
         "description": "Filled with mixed berry compote",
         "price": 420,
@@ -40,6 +49,15 @@
       },
       {
         "id": 2,
+        "name": "Fresh Doughnuts",
+        "description": "No stale products over here.",
+        "price": 670,
+        "oldPrice": 970,
+        "image": "https://i.pinimg.com/236x/f8/dd/6c/f8dd6cc52b089a2f06e2f3bde00cc551.jpg",
+        "rating": 4.5
+      },
+      {
+        "id": 3,
         "name": "Doughnut Party Box",
         "description": "24 assorted doughnuts perfect for parties",
         "price": 500,
@@ -48,7 +66,7 @@
         "rating": 5
       }
     ],
-    "reviews": [
+    "review": [
       {
         "id": 1,
         "name": "Sarah Johnson",
@@ -64,8 +82,18 @@
         "rating": 4.5,
         "text": "Amazing variety and always fresh. The Berry Blast is my favorite!",
         "date": "2024-05-10"
+      },
+      {
+        "id": 3,
+        "name": "Dexter Morgan",
+        "avatar": "https://i.pinimg.com/236x/bb/8a/91/bb8a91a047deaa78f7a89228f80d92da.jpg",
+        "rating": 4.2,
+        "text": "Every bite is a delight! The flavors are rich, and the freshness is unbeatable!",
+        "date": "2024-05-10"
       }
+
     ],
+
     "blogs": [
       {
         "id": 1,
