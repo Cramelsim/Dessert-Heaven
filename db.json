@@ -74,7 +74,7 @@
         "date": "2024-05-21",
         "image": "https://i.pinimg.com/474x/f9/24/c4/f924c4829c1ab271a2168d501bc0cad8.jpg",
         "excerpt": "Discover the secrets behind our perfectly crafted doughnuts.",
-        "content": "Full blog post content here..."
+        "content": "The art of doughnut making is a delicate blend of precision, creativity, and passion. It begins with crafting the perfect dough, a balance of flour, sugar, yeast, and other key ingredients, which must be mixed, kneaded, and allowed to rise to achieve a light, airy texture. The frying process is equally crucial, requiring the oil to be maintained at an optimal temperature to ensure a golden, crisp exterior while preserving a soft, fluffy interior. Beyond the basics, the artistry truly shines in the finishing touches: glazes, icings, and toppings are applied with care, transforming each doughnut into a masterpiece. From classic sugar coatings to intricate designs featuring edible decorations, every element reflects the maker's skill and creativity. This meticulous process results in doughnuts that not only satisfy the taste buds but also delight the eyes, elevating a simple treat into an indulgent experience."
       },
       {
         "id": 2,
@@ -83,7 +83,16 @@
         "date": "2024-05-18",
         "image": "https://i.pinimg.com/474x/64/55/17/645517c247f348d1a4f8e433544ec870.jpg",
         "excerpt": "From Dutch olykoeks to modern-day delights.",
-        "content": "Full blog post content here..."
-      }
-    ]
+        "content": "From Dutch olykoeks to modern-day delights. Over time, doughnuts evolved into a staple of American culture. These early versions were simply balls of sweetened dough fried in pork fat. The signature hole in the middle, a defining characteristic of modern doughnuts, is said to have been popularized in the mid-19th century by Hanson Gregory, an American ship captain, who claimed to have invented it to ensure even cooking of the dough. Over time, doughnuts evolved into a staple of American culture, particularly during World War I, when they were served to soldiers by volunteers, earning them the nickname doughboys.Today, doughnuts are celebrated globally, offered in countless variations, from classic glazed to gourmet creations, reflecting the enduring appeal of this delightful treat." 
+      },
+    {
+      "id": 2,
+      "title": "Tasty Doughnuts",
+      "author": "admin",
+      "date": "2024-05-18",
+      "image": "https://i.pinimg.com/474x/24/7b/74/247b743aec5f0ff6f9fd750b68c2974c.jpg",
+      "excerpt": "Discover the art of doughnut making and the stories behind our unique blends.",
+      "content": "Discover the art of doughnut making and the stories behind our unique blends, where tradition meets innovation to create unforgettable flavors. Each doughnut begins as a carefully crafted dough, made from the finest ingredients and perfected through years of expertise. The process is a labor of love, from hand-kneading to the precise frying that gives each treat its golden, crisp exterior and tender interior. What sets our doughnuts apart is the creativity in our blends—infused with exotic spices, vibrant fruit essences, and house-made fillings that tell a story with every bite. Whether inspired by cherished family recipes or bold culinary experiments, our doughnuts are a celebration of flavor, passion, and artistry that goes beyond the ordinary." 
+    }
+  ]
   }
